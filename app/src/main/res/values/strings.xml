@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OpenappSDK</string>
+    <string name="java">Java</string>
+    <string name="kotlin">Kotlin</string>
+</resources>
