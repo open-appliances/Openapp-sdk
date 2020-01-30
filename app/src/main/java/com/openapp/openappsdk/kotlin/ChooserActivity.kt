@@ -66,15 +66,6 @@ class ChooserActivity : AppCompatActivity() {
             if (lock != null && lock.macAddress != null) {
                 Log.e(TAG, "Lock - ${lock.macAddress} - ${lock.lockName} - ${lock.aesKey}")
                 lockList.add(lock)
-
-                try {
-                    listAdapter.currentList.clear()
-                } catch (exception: UnsupportedOperationException) {
-                    Log.e(TAG, exception.localizedMessage)
-                } catch (exception: Exception) {
-                    Log.e(TAG, exception.localizedMessage)
-                }
-
                 listAdapter.submitList(lockList)
             }
         })

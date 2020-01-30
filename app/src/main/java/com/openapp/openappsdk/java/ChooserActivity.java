@@ -80,14 +80,6 @@ public class ChooserActivity extends AppCompatActivity {
             if (lock != null && lock.getMacAddress() != null) {
                 Log.e(TAG, "Lock - " + lock.getMacAddress() + " - " + lock.getLockName() + " - " + lock.getAesKey());
                 lockList.add(lock);
-
-                try {
-                    lockAdapter.getCurrentList().clear();
-                } catch (UnsupportedOperationException exception) {
-                    Log.e(TAG, exception.getLocalizedMessage());
-                } catch (Exception exception) {
-                    Log.e(TAG, exception.getLocalizedMessage());
-                }
                 lockAdapter.submitList(lockList);
             }
         });

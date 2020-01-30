@@ -10,7 +10,7 @@ import co.openapp.sdk.data.db.entity.Lock
 import com.openapp.openappsdk.LockAdapter.LockViewHolder
 import kotlinx.android.synthetic.main.lock_add_list_item.view.*
 
-class LockAdapter(private val lockCallback: ((Lock) -> Unit)) : ListAdapter<Lock, LockViewHolder>(DIFF_CALLBACK) {
+class LockAdapter(private val lockCallback: ((Lock?) -> Unit)) : ListAdapter<Lock, LockViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LockViewHolder {
         return LockViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.lock_add_list_item, parent, false))
