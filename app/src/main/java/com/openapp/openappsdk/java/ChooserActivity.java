@@ -84,7 +84,8 @@ public class ChooserActivity extends AppCompatActivity {
             }
         });
 
-        startScan.setOnClickListener(v -> mService.startScan());
+//        startScan.setOnClickListener(v -> mService.startScan());
+        startScan.setOnClickListener(v -> mService.startOperateLock(this, "C8:DF:84:2B:97:0D"));
 
         stopScan.setOnClickListener(v -> mService.stopScan());
     }

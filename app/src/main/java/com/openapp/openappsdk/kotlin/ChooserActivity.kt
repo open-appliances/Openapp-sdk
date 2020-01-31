@@ -70,7 +70,7 @@ class ChooserActivity : AppCompatActivity() {
             }
         })
 
-        start_scan.setOnClickListener { mService.startScan() }
+        start_scan.setOnClickListener { mService.startOperateLock(this, "C8:DF:84:2B:97:0D") }
 
         stop_scan.setOnClickListener { mService.stopScan() }
     }
