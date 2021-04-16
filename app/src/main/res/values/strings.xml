@@ -4,4 +4,34 @@
     <string name="kotlin">Kotlin</string>
     <string name="start_scan">Start Scan</string>
     <string name="stop_scan">Stop Scan</string>
+
+    <string name="reset_fingerprints">Reset all fingerprints</string>
+    <string name="add_permanent_fingerprint">Add permanent fingerprint</string>
+    <string name="add_period_fingerprint">Add time limited fingerprint</string>
+    <string name="delete_fingerprint">delete fingerprint</string>
+    <string name="get_all_fingerprint">get all valid fingerprints in lock</string>
+    <string name="clear_all_fingerprint">clear all fingerprints</string>
+    <string name="unlock">Unlock</string>
+    <string name="lock">lock</string>
+
+    <string name="add_permanent_ic_card">Add permanent IC card</string>
+    <string name="add_period_id_card">Add time limited IC card</string>
+    <string name="modify_period">modify fingerprint validity period</string>
+
+    <string name="clear_all_passcode">clear all passcode</string>
+
+    <string name="modify_ic_card">modify icCard</string>
+    <string name="delete_ic_card">delete IC card</string>
+    <string name="get_all_ic_card">get all valid IC cards in lock</string>
+    <string name="clear_all_ic_card">clear all IC card</string>
+
+    <string name="set_custom_passcode">Create custom passcode</string>
+    <string name="modify_passcode">modify passcode</string>
+    <string name="delete_passcode">delete passcode</string>
+    <string name="reset_passcode">reset  passcode</string>
+    <string name="get_valid_passcodes">get all valid passcodes</string>
+    <string name="modify_date">modify expire date only</string>
+    <string name="modify_passcode_only">modify passcode only</string>
+    <string name="modify_passcode_and_date">modify both</string>
+    <string name="input_new_passcode">input new passcode</string>
 </resources>

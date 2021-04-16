@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_device_mac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:hint="Enter device mac address for testing"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_key_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:hint="Enter the key id"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_unlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unlock"
+            android:textAllCaps="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_margin="5dp"
+            android:background="@color/black" />
+
+        <Button
+            android:id="@+id/btn_addfingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_permanent_fingerprint"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_modifyfingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_period"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_deletefingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_fingerprint"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_deleteallfingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset_fingerprints"
+            android:textAllCaps="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_margin="5dp"
+            android:background="@color/black" />
+
+        <Button
+            android:id="@+id/btn_addiccard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_permanent_ic_card"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_modifyiccard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_ic_card"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_deleteiccard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_ic_card"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_deletealliccard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_all_ic_card"
+            android:textAllCaps="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_margin="5dp"
+            android:background="@color/black" />
+
+        <Button
+            android:id="@+id/btn_addpasscode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/set_custom_passcode"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_modifypasscode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modify_passcode"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_deletepasscode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_passcode"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_deleteallpasscode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_all_passcode"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
