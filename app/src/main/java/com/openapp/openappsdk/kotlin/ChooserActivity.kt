@@ -1,5 +1,6 @@
 package com.openapp.openappsdk.kotlin
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -70,7 +71,8 @@ class ChooserActivity : AppCompatActivity() {
             }
         })
 
-        start_scan.setOnClickListener { mService.startOperateLock(this, "C8:DF:84:2B:97:0D") }
+//        start_scan.setOnClickListener { mService.startOperateLock(this, "C8:DF:84:2B:97:0D") }
+        start_scan.setOnClickListener { startActivity(Intent(this, DoorLockActivity::class.java)) }
 
         stop_scan.setOnClickListener { mService.stopScan() }
     }

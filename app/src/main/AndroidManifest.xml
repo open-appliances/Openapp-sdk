@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.openapp.openappsdk">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:name=".OpenappApplication"
         android:allowBackup="true"
@@ -23,6 +24,10 @@
         <activity android:name="com.openapp.openappsdk.java.ChooserActivity" />
 
         <activity android:name="com.openapp.openappsdk.kotlin.ChooserActivity" />
+
+        <activity android:name="com.openapp.openappsdk.kotlin.DummyActivity"/>
+
+        <activity android:name=".kotlin.DoorLockActivity" />
     </application>
 
 </manifest>
