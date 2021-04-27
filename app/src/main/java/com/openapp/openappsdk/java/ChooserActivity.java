@@ -1,11 +1,15 @@
 package com.openapp.openappsdk.java;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,7 +43,21 @@ public class ChooserActivity extends AppCompatActivity {
 
         LockAdapter lockAdapter = new LockAdapter((Lock lock) -> {
             // Use your mac address here
-            if (lock != null && lock.getMacAddress().equals("C8:DF:84:2B:97:0D")) {
+            if (lock != null && lock.getMacAddress().equalsIgnoreCase("C8:DF:84:2B:97:0D")) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION);
+                        shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION);
+                    }
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return null;
+                }
                 mService.startOperateLock(this, lock.getMacAddress());
             }
             return null;
@@ -56,7 +74,7 @@ public class ChooserActivity extends AppCompatActivity {
                         Log.e(TAG, "SUCCESS " + response.data.getMessage() + " - " + response.data);
                         break;
                     case ERROR:
-                        Log.e(TAG, "ERROR " + response.getMessage() + " - " + response.data.getMessage());
+                        Log.e(TAG, "ERROR " + response.getMessage() + " - ");
                         break;
                     case LOADING:
                         Log.e(TAG, "Loading");
@@ -78,14 +96,28 @@ public class ChooserActivity extends AppCompatActivity {
             }
         }).observe(this, lock -> {
             if (lock != null && lock.getMacAddress() != null) {
-                Log.e(TAG, "Lock - " + lock.getMacAddress() + " - " + lock.getLockName() + " - " + lock.getAesKey());
+                Log.e(TAG, "Lock - " + lock.getMacAddress() + " - " + lock.getLockName() + " - " + lock.getLockId());
                 lockList.add(lock);
                 lockAdapter.submitList(lockList);
             }
         });
 
 //        startScan.setOnClickListener(v -> mService.startScan());
-        startScan.setOnClickListener(v -> mService.startOperateLock(this, "C8:DF:84:2B:97:0D"));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION);
+                shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION);
+            }
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        startScan.setOnClickListener(v -> mService.startScan());
 
         stopScan.setOnClickListener(v -> mService.stopScan());
     }
@@ -103,7 +135,7 @@ public class ChooserActivity extends AppCompatActivity {
 
         mService.fetchOALocks(
                 "1e888j000000000",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvcGVuYXBwIiwiZXhwIjoxNTYyOTI2NzUwMjgzLCJ1c2VySWQiOiIxZWlwcnA1MDAwMDAwMDAiLCJ1c2VyTWV0YSI6eyJpZCI6IjFlaXBycDUwMDAwMDAwMCIsImJ1c2luZXNzIjpbeyJpZCI6IjFlODg4bmQwMDAwMDAwMCIsImF1dGhVc2VySWQiOiIxZWlwcnA1MDAwMDAwMDAiLCJvcmdhbmlzYXRpb25JZCI6IjFlODg4ajAwMDAwMDAwMCIsImNvbXBhbnlJZCI6IjFlODg4ajAwMDAwMDAwMCIsInN1YkNvbXBhbnlJZCI6IjFlODg4ajAwMDAwMDAwMCIsInJvbGUiOiIxZTg4OGowMDAwMDAwMDAifSx7ImlkIjoiMWVpcHJwNTAwMDAwMDAwIiwiYXV0aFVzZXJJZCI6IjFlaXBycDUwMDAwMDAwMCIsIm9yZ2FuaXNhdGlvbklkIjoiMWU4ODhqajAwMDAwMDAwIiwiY29tcGFueUlkIjoiMWU4ODhqajAwMDAwMDAxIiwic3ViQ29tcGFueUlkIjoiMWU4YXUzdDAwMDAwMDAwIiwicm9sZSI6IjFlOGJlNHowMDAwMDAwMSJ9XX0sImNsaWVudCI6e30sImlhdCI6MTU2Mjg0MDM1MH0.VanDq0AsTbVO5E-8n8Ubo9JqNp0ElVzOIYnUwrLlTiA"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvcGVuYXBwIiwidXNlcklkIjoiMWVpcHJwNTAwMDAwMDAwIiwidXNlck1ldGEiOnsiaWQiOiIxZWlwcnA1MDAwMDAwMDAiLCJidXNpbmVzcyI6W3siaWQiOiIxZWlwcnA1MDAwMDAwMDAiLCJhdXRoVXNlcklkIjoiMWVpcHJwNTAwMDAwMDAwIiwib3JnYW5pc2F0aW9uSWQiOiIxZTg4OGpqMDAwMDAwMDAiLCJjb21wYW55SWQiOiIxZTg4OGpqMDAwMDAwMDEiLCJzdWJDb21wYW55SWQiOiIxZThhdTN0MDAwMDAwMDAiLCJyb2xlIjoiMWU4YmU0ejAwMDAwMDAxIn0seyJpZCI6IjFlODg4bmQwMDAwMDAwMCIsImF1dGhVc2VySWQiOiIxZWlwcnA1MDAwMDAwMDAiLCJvcmdhbmlzYXRpb25JZCI6IjFlODg4ajAwMDAwMDAwMCIsImNvbXBhbnlJZCI6IjFlODg4ajAwMDAwMDAwMCIsInN1YkNvbXBhbnlJZCI6IjFlODg4ajAwMDAwMDAwMCIsInJvbGUiOiIxZTg4OGowMDAwMDAwMDAifV19LCJjbGllbnQiOnt9LCJleHAiOjE2MjQ2ODEyODcsImlhdCI6MTYxOTQ5NzI4N30.Rhb22745ljoxpVVHB1OKpvbVdk2kTYZwWWX-LxeoXHc"
         );
     }
 }
